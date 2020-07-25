@@ -10,8 +10,8 @@
 #define NUMBER_LEN 8
 
 // Access point configuration
-const char thingName[] = "MMRC-client";               // Initial AP name, used as SSID of the own Access Point
-const char wifiInitialApPassword[] = "MmrcIsBest";    // Initial password, used when it creates an own Access Point
+const char thingName[] = "MRC-client";                  // Initial AP name, used as SSID of the own Access Point
+const char wifiInitialApPassword[] = "mrc4president";   // Initial password, used when it creates an own Access Point
 
 // Device configuration
 char cfgMqttServer[STRING_LEN];

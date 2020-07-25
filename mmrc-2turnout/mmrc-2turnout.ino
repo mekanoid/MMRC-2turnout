@@ -97,8 +97,6 @@ void setup() {
   // Define function to handle callbacks
   mqttClient.setCallback(mqttCallback);
 
-  // TODO Hantera/konvertera MQTT-parametrar
-
   
   // -----------------------------------------------------------------------------------------------
   // Servo setup
@@ -236,7 +234,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
   // Print the topic and payload
   if (debug == 1) {Serial.println(dbText+"Recieved: "+tpc+" = "+msg);}
 
-  // Check for "turnout01/turn/set" command
+  // Check for "turnout/direction/set" command
   if (tpc == subTopic[0]) {
     if (msg == "toggle") {
       btn1Pressed();
@@ -253,7 +251,6 @@ void configSaved()
   if (debug == 1) {Serial.println(dbText+"IotWebConf config saved");}
   deviceID = String(cfgDeviceId);
   deviceName = String(cfgDeviceName);
-  // TODO Hantera/konvertera MQTT-parametrar
   
   servo1min = atoi(cfgServo1Min);
   servo1max = atoi(cfgServo1Max);

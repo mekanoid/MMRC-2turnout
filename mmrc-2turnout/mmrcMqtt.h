@@ -15,7 +15,7 @@ const int nbrSubTopics = 1;
 String subTopic[nbrSubTopics];
 
 // Variable for topics to publish to
-const int nbrPubTopics = 7;
+const int nbrPubTopics = 8;
 String pubTopic[nbrPubTopics];
 String pubTopicContent[nbrPubTopics];
 
@@ -36,33 +36,37 @@ const byte RETAIN = 1;        // Used to publish topics as retained
 void mqttSetup() {
 
   // Subscribe
-  subTopic[0] = "mmrc/"+deviceID+"/turnout01/turn/set";
-//  subTopic[1] = "mmrc/"+deviceID+"/turnout01/turn/set";
+  subTopic[0] = "mmrc/"+deviceID+"/turnout/direction/set";
+//  subTopic[1] = "mmrc/"+deviceID+"/turnout/direction/set";
 //  subTopic[2] = signalOneSlaveListen;
 //  subTopic[3] = signalTwoSlaveListen;
 
   // Publish - device
   pubTopic[0] = "mmrc/"+deviceID+"/$name";
   pubTopicContent[0] = deviceName;
-  pubTopic[1] = "mmrc/"+deviceID+"/$nodes";
-  pubTopicContent[1] = "turnout01";
+
+  pubTopic[1] = "mmrc/"+deviceID+"/$deviceid";
+  pubTopicContent[1] = deviceID;
+
+  pubTopic[2] = "mmrc/"+deviceID+"/$nodes";
+  pubTopicContent[2] = "turnout";
 
   // Publish - node 01
-  pubTopic[2] = "mmrc/"+deviceID+"/turnout01/$name";
-  pubTopicContent[2] = "Växel 1";
-  pubTopic[3] = "mmrc/"+deviceID+"/turnout01/$type";
-  pubTopicContent[3] = "double";
-  pubTopic[4] = "mmrc/"+deviceID+"/turnout01/$properties";
-  pubTopicContent[4] = "turn";
+  pubTopic[3] = "mmrc/"+deviceID+"/turnout/$name";
+  pubTopicContent[3] = "Växel 1";
+  pubTopic[4] = "mmrc/"+deviceID+"/turnout/$type";
+  pubTopicContent[4] = "2turnout";
+  pubTopic[5] = "mmrc/"+deviceID+"/turnout/$properties";
+  pubTopicContent[5] = "direction";
   
   // Publish - node 01 - property 01
-  pubTopic[5] = "mmrc/"+deviceID+"/turnout01/turn/$name";
-  pubTopicContent[5] = "Omläggning";
-  pubTopic[6] = "mmrc/"+deviceID+"/turnout01/turn/$datatype";
-  pubTopicContent[6] = "string";
+  pubTopic[6] = "mmrc/"+deviceID+"/turnout/direction/$name";
+  pubTopicContent[6] = "Riktning";
+  pubTopic[7] = "mmrc/"+deviceID+"/turnout/direction/$datatype";
+  pubTopicContent[7] = "string";
 
   // Device status
-  pubTurnoutState = "mmrc/"+deviceID+"/turnout01/turn";
+  pubTurnoutState = "mmrc/"+deviceID+"/turnout/direction";
   pubDeviceStateTopic = "mmrc/"+deviceID+"/$state";
 
 }
