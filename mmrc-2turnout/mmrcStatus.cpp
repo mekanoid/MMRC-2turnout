@@ -45,12 +45,12 @@ void mmrcStatus::loop() {
     
     void mmrcStatus::on() {
       action = ON;
-      if (debug == 1) {Serial.println(dbText+"Led ON");}
+      if (debug == 1) {Serial.println(dbText+"Led pin"+pin+" ON");}
     }
 
     void mmrcStatus::off() {
       action = OFF;
-      if (debug == 1) {Serial.println(dbText+"Led OFF");}
+      if (debug == 1) {Serial.println(dbText+"Led pin"+pin+" OFF");}
     }
 
     void mmrcStatus::blink(int time) {
