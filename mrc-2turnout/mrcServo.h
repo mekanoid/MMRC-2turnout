@@ -1,13 +1,13 @@
 /*
- * MMRC Turnout library
+ * MRC Turnout library
  */
 #include <Arduino.h>
 #include <Servo.h> 
 
-#ifndef mmrcServo_h
-#define mmrcServo_h
+#ifndef mrcServo_h
+#define mrcServo_h
 
-class mmrcServo {
+class mrcServo {
   private:
     byte debug = 1;
     String dbText = "Servo  : ";
@@ -27,7 +27,7 @@ class mmrcServo {
     } servoAction;
 
   public:
-    mmrcServo(byte pin);
+    mrcServo(byte pin);
     Servo myservo;
     typedef void(*callback_t)();                // Test med callback
     void onFinished(callback_t callback);       // Test med callback

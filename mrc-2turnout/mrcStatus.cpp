@@ -1,7 +1,7 @@
 #include "Arduino.h"
-#include "mmrcStatus.h"
+#include "mrcStatus.h"
 
-mmrcStatus::mmrcStatus(byte pin) {
+mrcStatus::mrcStatus(byte pin) {
   // Use 'this->' to make the difference between the
   // 'pin' attribute of the class and the 
   // local variable 'pin' created from the parameter.
@@ -9,7 +9,7 @@ mmrcStatus::mmrcStatus(byte pin) {
   init();
 }
 
-void mmrcStatus::init() {
+void mrcStatus::init() {
   pinMode(pin, OUTPUT);
   // Always try to avoid duplicate code.
   // Instead of writing digitalWrite(pin, LOW) here,
@@ -17,7 +17,7 @@ void mmrcStatus::init() {
   action = OFF;
 }
 
-void mmrcStatus::loop() {
+void mrcStatus::loop() {
   unsigned long currentMillis = millis();
   switch (action) {
     case OFF:
@@ -43,23 +43,23 @@ void mmrcStatus::loop() {
   }
 }
     
-    void mmrcStatus::on() {
+    void mrcStatus::on() {
       action = ON;
       if (debug == 1) {Serial.println(dbText+"Led pin"+pin+" ON");}
     }
 
-    void mmrcStatus::off() {
+    void mrcStatus::off() {
       action = OFF;
       if (debug == 1) {Serial.println(dbText+"Led pin"+pin+" OFF");}
     }
 
-    void mmrcStatus::blink(int time) {
+    void mrcStatus::blink(int time) {
       action = BLINK;
       this->interval = time;
       if (debug == 1) {Serial.println(dbText+"Led BLINK");}
     }
 
-    boolean mmrcStatus::status() {
+    boolean mrcStatus::status() {
       if (debug == 1) {Serial.println(dbText+"Return status = "+action);}
       return action;
     }

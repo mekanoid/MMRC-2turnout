@@ -1,23 +1,23 @@
 #include "Arduino.h"
-#include "mmrcServo.h"
+#include "mrcServo.h"
 
-mmrcServo::mmrcServo(byte pin) {
+mrcServo::mrcServo(byte pin) {
   this->pin = pin;
   init();
 }
 
 // Test med callback
-void mmrcServo::onFinished(mmrcServo::callback_t callback)
+void mrcServo::onFinished(mrcServo::callback_t callback)
 {
   onFinished_callback = callback;
 }
 
-void mmrcServo::init() {
+void mrcServo::init() {
   myservo.attach(pin);        // Attach the servo on pin "pin" to the servo object
   servoAction = NON;
 }
 
-void mmrcServo::limits(int min, int max, int interval, int backStep) {
+void mrcServo::limits(int min, int max, int interval, int backStep) {
   this->minPosition = min-1;
   this->maxPosition = max+1;
   this->moveInterval = interval;
@@ -26,7 +26,7 @@ void mmrcServo::limits(int min, int max, int interval, int backStep) {
   if (debug == 1) {Serial.println(dbText+"Set backStep = "+backStep);}
 }
 
-void mmrcServo::loop(){
+void mrcServo::loop(){
   unsigned long currentMillis = millis();
   switch (servoAction) {
 
@@ -48,7 +48,7 @@ void mmrcServo::loop(){
           currentPosition = minPosition;
           myservo.write(currentPosition);          // Tell servo to go to start position
           if (debug == 1) {Serial.println(dbText+"Slutposition = "+currentPosition);}
-          // Klart! Anropa den funktion som definierats i huvudprogrammet med funktionen "mmrcServo.onFinished(...)"
+          // Klart! Anropa den funktion som definierats i huvudprogrammet med funktionen "mrcServo.onFinished(...)"
           onFinished_callback();
         } else {
           myservo.write(currentPosition);          // Tell servo to go to start position
@@ -70,7 +70,7 @@ void mmrcServo::loop(){
           currentPosition = maxPosition;
           myservo.write(currentPosition);          // Tell servo to go to start position
           if (debug == 1) {Serial.println(dbText+"Slutposition = "+currentPosition);}
-          // Klart! Anropa den funktion som definierats i huvudprogrammet med funktionen "mmrcServo.onFinished(...)"
+          // Klart! Anropa den funktion som definierats i huvudprogrammet med funktionen "mrcServo.onFinished(...)"
           onFinished_callback();
         } else {
           myservo.write(currentPosition);  // Tell servo to go to start position
@@ -81,14 +81,14 @@ void mmrcServo::loop(){
   }
 }
 
-void mmrcServo::through(){
+void mrcServo::through(){
   servoAction = MAX;
   endPosition = maxPosition+backStep;
   if (debug == 1) {Serial.println(dbText+"Moving to = "+endPosition);}
   if (debug == 1) {Serial.println(dbText+"Backstep = "+backStep);}
 }
     
-void mmrcServo::diverge(){
+void mrcServo::diverge(){
   servoAction = MIN;
   endPosition = minPosition-backStep;
   if (debug == 1) {Serial.println(dbText+"Moving to = "+endPosition);}
@@ -96,16 +96,16 @@ void mmrcServo::diverge(){
 }
 
 // Tell servo to go directly to "newPosition"
-void mmrcServo::moveTo (int newPosition) {
+void mrcServo::moveTo (int newPosition) {
   myservo.write(newPosition);    
   currentPosition = newPosition;
 }
 
-boolean mmrcServo::status() {
+boolean mrcServo::status() {
   return servoAction;
 }
 
-boolean mmrcServo::position() {
+boolean mrcServo::position() {
   return servoStatus;
 }
     

@@ -1,5 +1,5 @@
 /*
-  MMRC MQTT settings & functions
+  MRC MQTT settings & functions
 */
 
 #include <Arduino.h>
@@ -36,38 +36,38 @@ const byte RETAIN = 1;        // Used to publish topics as retained
 void mqttSetup() {
 
   // Subscribe
-  subTopic[0] = "mmrc/"+deviceID+"/turnout/direction/set";
-//  subTopic[1] = "mmrc/"+deviceID+"/turnout/direction/set";
+  subTopic[0] = "mrc/"+deviceID+"/turnout/direction/set";
+//  subTopic[1] = "mrc/"+deviceID+"/turnout/direction/set";
 //  subTopic[2] = signalOneSlaveListen;
 //  subTopic[3] = signalTwoSlaveListen;
 
   // Publish - device
-  pubTopic[0] = "mmrc/"+deviceID+"/$name";
+  pubTopic[0] = "mrc/"+deviceID+"/$name";
   pubTopicContent[0] = deviceName;
 
-  pubTopic[1] = "mmrc/"+deviceID+"/$deviceid";
+  pubTopic[1] = "mrc/"+deviceID+"/$deviceid";
   pubTopicContent[1] = deviceID;
 
-  pubTopic[2] = "mmrc/"+deviceID+"/$nodes";
+  pubTopic[2] = "mrc/"+deviceID+"/$nodes";
   pubTopicContent[2] = "turnout";
 
   // Publish - node 01
-  pubTopic[3] = "mmrc/"+deviceID+"/turnout/$name";
+  pubTopic[3] = "mrc/"+deviceID+"/turnout/$name";
   pubTopicContent[3] = "Växel 1";
-  pubTopic[4] = "mmrc/"+deviceID+"/turnout/$type";
+  pubTopic[4] = "mrc/"+deviceID+"/turnout/$type";
   pubTopicContent[4] = "2turnout";
-  pubTopic[5] = "mmrc/"+deviceID+"/turnout/$properties";
+  pubTopic[5] = "mrc/"+deviceID+"/turnout/$properties";
   pubTopicContent[5] = "direction";
   
   // Publish - node 01 - property 01
-  pubTopic[6] = "mmrc/"+deviceID+"/turnout/direction/$name";
+  pubTopic[6] = "mrc/"+deviceID+"/turnout/direction/$name";
   pubTopicContent[6] = "Riktning";
-  pubTopic[7] = "mmrc/"+deviceID+"/turnout/direction/$datatype";
+  pubTopic[7] = "mrc/"+deviceID+"/turnout/direction/$datatype";
   pubTopicContent[7] = "string";
 
   // Device status
-  pubTurnoutState = "mmrc/"+deviceID+"/turnout/direction";
-  pubDeviceStateTopic = "mmrc/"+deviceID+"/$state";
+  pubTurnoutState = "mrc/"+deviceID+"/turnout/direction";
+  pubDeviceStateTopic = "mrc/"+deviceID+"/$state";
 
 }
 

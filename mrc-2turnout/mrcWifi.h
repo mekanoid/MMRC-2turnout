@@ -1,5 +1,5 @@
 /*
-  MMRC Wifi settings
+  MRC Wifi settings
 */
 
 // --------------------------------------------------------------------------------------------------
@@ -158,13 +158,13 @@ void handleRoot()
   }
   String page = "<!DOCTYPE html><html lang=\"en\"><head><meta name=\"viewport\" ";
   page += "content=\"width=device-width, initial-scale=1, user-scalable=no\"/>";
-  page += "<title>MMRC-inst&auml;llningar</title></head><body>";
+  page += "<title>MRC-inst&auml;llningar</title></head><body>";
   page += "<h1>Inst&auml;llningar</h1>";
-  page += "<p>V&auml;lkommen till MMRC-enheten med namn: '";
+  page += "<p>V&auml;lkommen till MRC-enheten med namn: '";
   page += cfgDeviceId;
   page += "'</p>";
   page += "P&aring; sidan <a href='config'>Inst&auml;llningar</a> ";
-  page += "kan du best&auml;mma hur just denna MMRC-klient ska fungera.";
+  page += "kan du best&auml;mma hur just denna MRC-klient ska fungera.";
 
   page += "<p>M&ouml;jligheten att &auml;ndra dessa inst&auml;llningar &auml;r ";
   page += "alltid tillg&auml;nglig de f&ouml;rsta ";

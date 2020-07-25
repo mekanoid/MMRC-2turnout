@@ -1,12 +1,12 @@
 /*
- * MMRC Status led library
+ * MRC Status led library
  */
 #include <Arduino.h>
 
-#ifndef mmrcStatus_h
-#define mmrcStatus_h
+#ifndef mrcStatus_h
+#define mrcStatus_h
 
-class mmrcStatus {
+class mrcStatus {
 
   private:
     byte debug = 1;
@@ -22,7 +22,7 @@ class mmrcStatus {
     } action;
     
   public:
-    mmrcStatus(byte pin);
+    mrcStatus(byte pin);
     void init();
     void loop();
     void on();

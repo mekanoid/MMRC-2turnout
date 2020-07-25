@@ -1,6 +1,6 @@
 // ==================================================================================================
 //
-//  Modulstyrning MMRC 2turnout
+//  Modulstyrning MRC 2turnout
 //  Copyright (C) 2020  Peter Kindström
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -25,14 +25,14 @@
 #include <PubSubClient.h>     // Handle MQTT subcription & publish
 #include <IotWebConf.h>       // Handle wifi connection & client settings
 #include <EasyButton.h>       // Handle button presses
-#include "mmrcServo.h"        // Handle turnout servos
-#include "mmrcStatus.h"       // Handle status LEDs
+#include "mrcServo.h"         // Handle turnout servos
+#include "mrcStatus.h"        // Handle status LEDs
 
 
 // Include settings and functions sketch files
-#include "mmrcSettings.h"
-#include "mmrcWifi.h"
-#include "mmrcMqtt.h"
+#include "mrcSettings.h"
+#include "mrcWifi.h"
+#include "mrcMqtt.h"
 
 
 // --------------------------------------------------------------------------------------------------
@@ -40,13 +40,13 @@
 // --------------------------------------------------------------------------------------------------
 
 // Create Servo object and assign pin
-mmrcServo servoVx1(pinVx1Servo);
-mmrcServo servoVx2(pinVx2Servo);
+mrcServo servoVx1(pinVx1Servo);
+mrcServo servoVx2(pinVx2Servo);
 
 
 // Create Status LED object and assign pin
-mmrcStatus ledVx1Rakt(pinVx1Led1);
-mmrcStatus ledVx1Turn(pinVx1Led2);
+mrcStatus ledVx1Rakt(pinVx1Led1);
+mrcStatus ledVx1Turn(pinVx1Led2);
 
 
 // Create Button object and set initial values
@@ -72,7 +72,7 @@ void setup() {
   // ------------------------------------------------------------------------------------------------
   // IotWebConfig setup
 
-  // Initial setup (in the mmrcWifi.h file)
+  // Initial setup (in the mrcWifi.h file)
   wifiSetup();
 
   // Set up required URL handlers for the config web pages
@@ -84,7 +84,7 @@ void setup() {
   // -------------------------------------------------------------------------------------------------
   // MQTT setup
 
-  // Define topics (in the mmrcMqtt.h file)
+  // Define topics (in the mrcMqtt.h file)
   mqttSetup();
 
   // Wait for IotWebServer to start network connection
